@@ -1,12 +1,12 @@
-@import './variables';
+@import "./variables";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 h1,
@@ -14,13 +14,6 @@ h2 {
   font-size: 24px;
   margin: $spacing-xxs 0;
   font-weight: 300;
-}
-
-input {
-  font-size: 0.8rem;
-  border: none;
-  border-bottom: 1px solid $gray40;
-  padding: $spacing-xxs;
 }
 
 a {
@@ -52,9 +45,11 @@ a {
 .header--content {
   display: flex;
   height: 10vh;
-  > * {
-    display: flex;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
+
+  > h1 {
+    font-weight: 500;
   }
 }
 
@@ -111,20 +106,90 @@ form {
 }
 .book {
   border: 1px solid silver;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 .book--container {
   display: flex;
   flex-flow: row nowrap;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: stretch;
 }
 
 .search-params {
   flex-grow: 3;
-
 }
 .sidebar {
   flex-grow: 1;
+}
 
+/*** START OF PERSONAL STYLING ***/
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  > div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.search-books {
+  grid-column: span 2 / span 2;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+/* Search bar */
+.search-bar {
+  > div {
+    position: relative;
+    display: flex;
+    padding: 10px 15px 10px 35px;
+    border: 1px solid #f2f2f2fe;
+    border-radius: $div-border-radius;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  input {
+    padding: $btn-padding;
+    width: 100%;
+    border: none;
+
+    &:focus-visible {
+      outline: 2px solid $blue-accent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    padding: $btn-padding;
+    background-color: $blue-accent;
+    color: $white;
+    border: none;
+    border-radius: $btn-border-radius;
+    cursor: pointer;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #cdcdcd;
+}
+
+/* Wishlist */
+
+.wishlist {
+  border: red solid 1px;
+  grid-column: span 1 / span 1;
+  padding: 10px;
 }
