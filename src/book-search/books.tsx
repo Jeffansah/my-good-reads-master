@@ -1,5 +1,6 @@
 import React from "react";
 import { Book } from "../types/books.types";
+import BookCard from "./book-card";
 interface BookListProps {
   books: Book[];
   isLoading: boolean;
@@ -30,10 +31,13 @@ const Books = ({ books, isLoading, searchQuery }: BookListProps) => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {books.map((book) => (
-        <p>{book.volumeInfo.title}</p>
-      ))}
+    <div className="">
+      <h1 className="books-header">Books related to "{searchQuery}"</h1>
+      <div className="books-list-container">
+        {books.map(
+          (book) => book.volumeInfo && <BookCard key={book.id} book={book} />
+        )}
+      </div>
     </div>
   );
 };
