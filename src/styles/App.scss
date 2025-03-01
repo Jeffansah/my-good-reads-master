@@ -199,7 +199,7 @@ form {
 /* Books */
 
 .books-header {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
   color: #333;
   margin: 0 0 40px 0;
@@ -353,6 +353,7 @@ form {
   align-items: center;
   justify-content: center;
   padding: 10px;
+  column-gap: 10px;
 }
 
 .pagination-button {
@@ -394,6 +395,134 @@ form {
 
 .pagination-dots {
   padding: 5px;
+  color: #666;
+}
+
+/* loader */
+
+.loading-book-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: 50px;
+}
+
+.loading-book-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  height: 550px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: white;
+  position: relative;
+}
+
+.loading-book-card-image-container {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.loading-book-card-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+}
+
+.loading-book-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+}
+
+.loading-book-content-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.loading-text-line {
+  height: 16px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-title {
+  height: 22px;
+  width: 80%;
+}
+
+.loading-description {
+  width: 90%;
+}
+
+.loading-meta {
+  width: 50%;
+}
+
+.loading-book-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.loading-wishlist-button {
+  width: 100%;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+/* Shimmer Animation */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #e0e0e0, #d6d6d6, #e0e0e0);
+  animation: shimmer-animation 1.5s infinite linear;
+}
+
+@keyframes shimmer-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Not Found */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.not-found-image {
+  width: 200px;
+  height: 200px;
+}
+
+.not-found-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
   color: #666;
 }
 

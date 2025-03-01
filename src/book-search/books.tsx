@@ -1,31 +1,41 @@
 import React from "react";
 import { Book } from "../types/books.types";
 import BookCard from "./book-card";
+import Loading from "./loading";
+import notfound from "../assets/not-found.png";
+import search from "../assets/search.png";
+
 interface BookListProps {
-  books: Book[];
+  books: Book[] | null;
   isLoading: boolean;
   searchQuery: string;
+  totalItems: number;
 }
 
-const Books = ({ books, isLoading, searchQuery }: BookListProps) => {
+const Books = ({
+  books,
+  isLoading,
+  searchQuery,
+  totalItems,
+}: BookListProps) => {
   if (isLoading) {
-    return <>loading...</>;
+    return <Loading count={6} />;
   }
 
-  if (books.length === 0 && searchQuery) {
+  if (!books) {
     return (
-      <div className="text-center py-10">
-        <p className="text-lg text-gray-600">
-          No books found for "{searchQuery}"
-        </p>
+      <div className="not-found-container">
+        <img src={notfound} className="not-found-image" />
+        <p className="not-found-text">No books found for "{searchQuery}"</p>
       </div>
     );
   }
 
   if (books.length === 0) {
     return (
-      <div className="text-center py-10">
-        <p className="text-lg text-gray-600">Search for books to see results</p>
+      <div className="not-found-container">
+        <img src={search} className="not-found-image" />
+        <p className="not-found-text">Search for books to see results</p>
       </div>
     );
   }

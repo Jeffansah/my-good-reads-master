@@ -68,7 +68,7 @@ import Pagination from "./pagination";
 // };
 
 const BookSearch = () => {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<Book[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [totalItems, setTotalItems] = useState(0);
@@ -99,22 +99,21 @@ const BookSearch = () => {
       const data = (await response.json()) as BooksResponse;
       const fetchedTotalItems = data.totalItems || 0;
 
-      // Ensure total items does not exceed Google's limit (max 1000)
       const adjustedTotalItems = Math.min(fetchedTotalItems, 1000);
       const totalPages = Math.ceil(adjustedTotalItems / itemsPerPage);
 
       if (data.items && data.items.length > 0) {
         setBooks(data.items);
         setTotalItems(adjustedTotalItems);
-        setCurrentPage(Math.min(page, totalPages)); // Ensure valid page
+        setCurrentPage(Math.min(page, totalPages));
       } else {
-        setBooks([]);
+        setBooks(null);
         setTotalItems(0);
-        setCurrentPage(1); // Reset to page 1 if no results
+        setCurrentPage(1);
       }
     } catch (error) {
       console.error("Error fetching books:", error);
-      setBooks([]);
+      setBooks(null);
       setTotalItems(0);
     } finally {
       setIsLoading(false);
@@ -152,6 +151,7 @@ const BookSearch = () => {
             books={books}
             isLoading={isLoading}
             searchQuery={searchQuery}
+            totalItems={totalItems}
           />
           {totalItems > 0 && (
             <Pagination
