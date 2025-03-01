@@ -347,6 +347,56 @@ form {
   stroke: $blue-accent;
 }
 
+/* Pagination */
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pagination-button {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #666;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.pagination-button:hover {
+  background-color: #ddd;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-page-button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.pagination-page-button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination-page-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-dots {
+  padding: 5px;
+  color: #666;
+}
+
 /* Wishlist */
 
 .wishlist {

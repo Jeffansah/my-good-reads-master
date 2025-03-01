@@ -3,8 +3,8 @@ import { getBooksByType } from "./book-search.service";
 import SearchBar from "./search-bar";
 import Books from "./books";
 import { Book, BooksResponse } from "../types/books.types";
+import Pagination from "./pagination";
 
-// const BookSearch = () => {
 //     const [bookType, updateBookType] = useState("");
 //     const [bookTypeToSearch, updateBookTypeToSearch] = useState("");
 //     const [allAvailableBooks, setAllAvailableBooks] = useState([]);
@@ -71,29 +71,64 @@ const BookSearch = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [totalItems, setTotalItems] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const lastSearchRef = useRef("");
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const fetchBooks = useCallback(async (query: string, page: number) => {
     if (!query.trim()) {
       setBooks([]);
+      setTotalItems(0);
       return;
     }
+
     setIsLoading(true);
+    lastSearchRef.current = query;
+
     try {
+      const startIndex = (page - 1) * itemsPerPage;
+
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
           query
-        )}`
+        )}&startIndex=${startIndex}&maxResults=${itemsPerPage}`
       );
+
       const data = (await response.json()) as BooksResponse;
-      setBooks(data.items || []);
+      const fetchedTotalItems = data.totalItems || 0;
+
+      // Ensure total items does not exceed Google's limit (max 1000)
+      const adjustedTotalItems = Math.min(fetchedTotalItems, 1000);
+      const totalPages = Math.ceil(adjustedTotalItems / itemsPerPage);
+
+      if (data.items && data.items.length > 0) {
+        setBooks(data.items);
+        setTotalItems(adjustedTotalItems);
+        setCurrentPage(Math.min(page, totalPages)); // Ensure valid page
+      } else {
+        setBooks([]);
+        setTotalItems(0);
+        setCurrentPage(1); // Reset to page 1 if no results
+      }
     } catch (error) {
       console.error("Error fetching books:", error);
       setBooks([]);
+      setTotalItems(0);
     } finally {
       setIsLoading(false);
     }
   }, []);
+
+  const handlePageChange = (page: number) => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    if (page > totalPages) {
+      console.warn(`Invalid page request: ${page}. Max allowed: ${totalPages}`);
+      return;
+    }
+    fetchBooks(searchQuery, page);
+  };
 
   const handleSearch = useCallback(
     (query: string) => {
@@ -118,6 +153,14 @@ const BookSearch = () => {
             isLoading={isLoading}
             searchQuery={searchQuery}
           />
+          {totalItems > 0 && (
+            <Pagination
+              currentPage={currentPage}
+              totalItems={totalItems}
+              itemsPerPage={itemsPerPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </div>
         <div className="wishlist"></div>
       </div>
