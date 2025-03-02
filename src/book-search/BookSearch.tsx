@@ -137,7 +137,7 @@ const BookSearch = () => {
       }
       searchTimeoutRef.current = setTimeout(() => {
         fetchBooks(query, 1);
-      }, 300);
+      }, 500);
     },
     [fetchBooks]
   );

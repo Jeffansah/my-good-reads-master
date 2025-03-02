@@ -30,7 +30,7 @@ const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
   );
 
   return (
-    <form className="search-bar">
+    <form className="search-bar" onSubmit={handleSubmit}>
       <div>
         <input
           type="text"
@@ -40,7 +40,7 @@ const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
           className=""
         />
         <Search className="search-icon" />
-        <button>Search</button>
+        <button type="submit">Search</button>
       </div>
     </form>
   );

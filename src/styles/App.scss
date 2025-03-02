@@ -428,8 +428,7 @@ form {
 .loading-book-card-image {
   width: 100%;
   height: 100%;
-  border-radius: 4px;
-  background-color: #e0e0e0;
+  background-color: #e2e8f0;
 }
 
 .loading-book-content {
@@ -448,7 +447,7 @@ form {
 
 .loading-text-line {
   height: 16px;
-  background-color: #e0e0e0;
+  background-color: #e2e8f0;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
@@ -476,7 +475,7 @@ form {
 .loading-wishlist-button {
   width: 100%;
   height: 40px;
-  background-color: #e0e0e0;
+  background-color: #e2e8f0;
   border-radius: 50px;
   margin-top: 10px;
 }
@@ -491,7 +490,7 @@ form {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #e0e0e0, #d6d6d6, #e0e0e0);
+  background: linear-gradient(90deg, #e2e8f0, #cbd5e1, #e2e8f0);
   animation: shimmer-animation 1.5s infinite linear;
 }
 
