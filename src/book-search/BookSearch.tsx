@@ -4,6 +4,7 @@ import SearchBar from "./search-bar";
 import Books from "./books";
 import { Book, BooksResponse } from "../types/books.types";
 import Pagination from "./pagination";
+import { useWishlist } from "../context/wishlist-context";
 
 //     const [bookType, updateBookType] = useState("");
 //     const [bookTypeToSearch, updateBookTypeToSearch] = useState("");

@@ -61,7 +61,7 @@ interface SearchInfo {
 }
 
 export interface Book {
-  kind: "books#volume";
+  kind: string;
   id: string;
   etag: string;
   selfLink: string;
@@ -72,7 +72,7 @@ export interface Book {
 }
 
 export interface BooksResponse {
-  kind: "books#volumes";
+  kind: string;
   totalItems: number;
   items: Book[];
 }
