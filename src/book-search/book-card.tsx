@@ -3,9 +3,10 @@ import { Book } from "../types/books.types";
 import placeholder from "../assets/placeholder.png";
 import { formatDate } from "../lib/formatDate";
 import { Heart, Plus } from "lucide-react";
+import { useWishlist } from "../context/wishlist-context";
 
 const BookCard = ({ book }: { book: Book }) => {
-  const [isWishlisted, setIsWishlisted] = useState<boolean>(false);
+  const { addToWishlist, isInWishlist } = useWishlist();
 
   const { volumeInfo } = book;
 
@@ -44,11 +45,24 @@ const BookCard = ({ book }: { book: Book }) => {
           </div>
         </div>
         <button
-          className={`wishlist-button ${isWishlisted ? "wishlisted" : ""}`}
-          onClick={() => setIsWishlisted(!isWishlisted)}
+          className={`wishlist-button ${
+            isInWishlist(bookInfo.id) ? "wishlisted" : ""
+          }`}
+          onClick={() =>
+            addToWishlist({
+              id: bookInfo.id,
+              title: bookInfo.title,
+              authors: bookInfo.authors,
+              imageUrl: bookInfo.imageUrl,
+            })
+          }
         >
           <Heart className="heart-icon" />
-          <span>{isWishlisted ? "Added to Wishlist" : "Add to Wishlist"}</span>
+          <span>
+            {isInWishlist(bookInfo.id)
+              ? "Added to Wishlist"
+              : "Add to Wishlist"}
+          </span>
         </button>
       </div>
     </div>
