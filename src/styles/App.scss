@@ -8,6 +8,10 @@
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
+
+  @media (max-width: 1023px) {
+    overflow-x: hidden;
+  }
 }
 
 h1,
@@ -38,6 +42,10 @@ a {
   color: $white;
   padding: $spacing-3xs $spacing-xs;
 
+  @media (max-width: 1023px) {
+    width: 100vw;
+  }
+
   button {
     padding: 0 $spacing-xs;
   }
@@ -54,6 +62,14 @@ a {
     font-size: 36px;
     text-transform: uppercase;
     letter-spacing: 0.025em;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      font-size: 32px;
+    }
   }
 }
 
@@ -101,10 +117,6 @@ main {
   color: $gray40;
 }
 
-form {
-  margin-bottom: $spacing-xs;
-}
-
 .full-width {
   width: 100%;
 }
@@ -128,6 +140,13 @@ form {
 
 /*** START OF PERSONAL STYLING ***/
 
+.app-section {
+  @media (max-width: 1023px) {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -135,10 +154,22 @@ form {
   padding-top: 20px;
   padding-bottom: 20px;
 
+  @media (max-width: 1023px) {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   > div {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
   }
 }
 
@@ -147,10 +178,20 @@ form {
   display: flex;
   flex-direction: column;
   row-gap: 40px;
+
+  @media (max-width: 1023px) {
+    grid-column: span 1 / span 1;
+    padding: 0 16px;
+    overflow-x: auto;
+  }
 }
 
 /* Search bar */
 .search-bar {
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+
   > div {
     position: relative;
     display: flex;
@@ -158,6 +199,11 @@ form {
     border: 1px solid #f2f2f2fe;
     border-radius: 50px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 
   input {
@@ -171,6 +217,14 @@ form {
 
     &:focus {
       outline: none;
+    }
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+
+      &::placeholder {
+        font-size: 14px;
+      }
     }
   }
 
@@ -209,9 +263,17 @@ form {
 
 .books-list-container {
   display: grid;
-
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 50px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+  }
 }
 
 .book-card {
@@ -356,6 +418,16 @@ form {
   justify-content: center;
   padding: 10px;
   column-gap: 10px;
+
+  @media (max-width: 768px) {
+    padding-top: 0;
+    padding-bottom: 250px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding-top: 0;
+    padding-bottom: 300px;
+  }
 }
 
 .pagination-button {
@@ -406,6 +478,15 @@ form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 50px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+  }
 }
 
 .loading-book-card {
@@ -513,11 +594,21 @@ form {
   align-items: center;
   justify-content: center;
   padding-top: 50px;
+
+  @media (max-width: 1023px) {
+    padding-top: 0;
+    gap: 20px;
+  }
 }
 
 .not-found-image {
   width: 200px;
   height: 200px;
+
+  @media (max-width: 767px) {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .not-found-text {
@@ -529,20 +620,81 @@ form {
 
 /* Wishlist */
 
-.wishlist {
-  border: red solid 1px;
-  grid-column: span 1 / span 1;
-  padding: 10px;
-}
-
 .wishlist-container {
   border: 1px solid #e0e0e0;
   border-radius: 50px;
   padding: 35px;
+  padding-bottom: 45px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   height: 100%;
   background: white;
   max-height: max-content;
+  height: max-content;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.wishlist-mobile-container {
+  display: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 50px 50px 0 0;
+  padding: 35px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background: white;
+  width: 100%;
+  height: 25vh;
+  animation: none;
+
+  @media (max-width: 1023px) {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    z-index: 200;
+  }
+
+  .wishlist-expand {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    height: 3px;
+    width: 80px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+}
+
+.expanded {
+  animation: expand 0.5s cubic-bezier(1, 0, 0, 1) forwards;
+}
+
+.collapsed {
+  animation: collapse 0.5s cubic-bezier(1, 0, 0, 1) forwards;
+}
+
+@keyframes expand {
+  from {
+    height: 25vh;
+    border-radius: 50px 50px 0 0;
+  }
+  to {
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@keyframes collapse {
+  from {
+    height: 100vh;
+    border-radius: 0;
+  }
+  to {
+    height: 25vh;
+    border-radius: 50px 50px 0 0;
+  }
 }
 
 .wishlist-header {
@@ -550,6 +702,10 @@ form {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+
+  @media (max-width: 1023px) {
+    margin-bottom: 12px;
+  }
 }
 
 .wishlist-title {
@@ -568,6 +724,10 @@ form {
 .wishlist-empty {
   text-align: center;
   padding: 40px 0;
+
+  @media (max-width: 1023px) {
+    padding: 20px 0;
+  }
 }
 
 .wishlist-empty-text {
@@ -588,6 +748,20 @@ form {
   max-height: calc(100vh - 200px);
   overflow-y: auto;
   padding-right: 8px;
+
+  @media (max-width: 1023px) {
+    flex-direction: row;
+    overflow-x: scroll;
+    width: 100%;
+  }
+}
+
+.expanded_items {
+  flex-direction: column;
+}
+
+.collapsed_items {
+  flex-direction: row;
 }
 
 .wishlist-card {

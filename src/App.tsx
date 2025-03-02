@@ -2,19 +2,21 @@ import React from "react";
 import "./styles/App.scss";
 import BookSearch from "./book-search/BookSearch";
 import { WishlistProvider } from "./context/wishlist-context";
+import Wishlist from "./wishlist/wishlist";
+import WishlistMobile from "./wishlist/wishlist-mobile";
 
 function App() {
   return (
     <WishlistProvider>
-      <div>
+      <div className="app-section">
         <header className="header">
           <div className="header--content">
             <h1>My Good Reads</h1>
           </div>
         </header>
-        <main>
-          <BookSearch />
-        </main>
+
+        <BookSearch />
+        <WishlistMobile />
       </div>
     </WishlistProvider>
   );
