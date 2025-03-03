@@ -19,13 +19,13 @@ A modern web application for searching books and managing your reading wishlist.
 - Jest and React Testing Library for testing
 - Google Books API for book data
 
-> **Note:** This application uses the Google Books API which has rate limits. If you encounter "No books found" errors, it might be due to:
+> **Note:** This application uses the Google Books API which has rate limits. If you encounter "No books found" errors, even though your search query seems right, it might be due to:
 >
 > - Reaching the API rate limit
 > - Too many requests in a short time period
 > - Network connectivity issues
 >
-> Please wait a few minutes before trying again if you encounter these issues.
+> Please wait a while before trying again if you encounter these issues.
 
 ## Prerequisites
 
