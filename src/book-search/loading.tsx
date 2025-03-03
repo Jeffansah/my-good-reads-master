@@ -6,7 +6,7 @@ interface LoadingStateProps {
 
 const Loading = ({ count = 4 }: LoadingStateProps) => {
   return (
-    <div className="loading-book-container">
+    <div className="loading-book-container" data-testid="loading-skeleton">
       {Array.from({ length: count }).map((_, index) => (
         <div className="loading-book-card">
           <div className="loading-book-card-image-container">

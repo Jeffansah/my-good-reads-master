@@ -25,7 +25,7 @@ const Books = ({
   if (!books) {
     return (
       <div className="not-found-container">
-        <img src={notfound} className="not-found-image" />
+        <img src={notfound} className="not-found-image" alt="No books found" />
         <p className="not-found-text">No books found for "{searchQuery}"</p>
       </div>
     );
@@ -34,7 +34,7 @@ const Books = ({
   if (books.length === 0) {
     return (
       <div className="not-found-container">
-        <img src={search} className="not-found-image" />
+        <img src={search} className="not-found-image" alt="Search for books" />
         <p className="not-found-text">Search for books to see results</p>
       </div>
     );

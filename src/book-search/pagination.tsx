@@ -38,6 +38,7 @@ const Pagination: React.FC<PaginationProps> = ({
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className={`pagination-button ${currentPage === 1 ? "disabled" : ""}`}
+        data-testid="pagination-prev"
       >
         <ChevronLeft size={20} />
       </button>
@@ -46,6 +47,7 @@ const Pagination: React.FC<PaginationProps> = ({
           <button
             onClick={() => onPageChange(1)}
             className="pagination-page-button"
+            data-testid="pagination-page-1"
           >
             1
           </button>
@@ -59,6 +61,7 @@ const Pagination: React.FC<PaginationProps> = ({
           className={`pagination-page-button ${
             currentPage === number ? "active" : ""
           }`}
+          data-testid={`pagination-page-${number}`}
         >
           {number}
         </button>
@@ -71,6 +74,7 @@ const Pagination: React.FC<PaginationProps> = ({
           <button
             onClick={() => onPageChange(totalPages)}
             className="pagination-page-button"
+            data-testid="pagination-page-last"
           >
             Last
           </button>
@@ -82,6 +86,7 @@ const Pagination: React.FC<PaginationProps> = ({
         className={`pagination-button ${
           currentPage === totalPages ? "disabled" : ""
         }`}
+        data-testid="pagination-next"
       >
         <ChevronRight size={20} />
       </button>

@@ -27,6 +27,7 @@ const WishlistCard = ({ title, image, authors, id }: WishlistCardProps) => {
           onClick={() => removeFromWishlist(id)}
           className="wishlist-card-remove"
           aria-label="Remove from wishlist"
+          data-testid="wishlist-card-remove"
         >
           <Trash2 size={16} />
         </button>

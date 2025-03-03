@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/App.scss";
-import BookSearch from "./book-search/BookSearch";
+import BookSearch from "./book-search/book-search";
 import { WishlistProvider } from "./context/wishlist-context";
 import WishlistMobile from "./wishlist/wishlist-mobile";
 
