@@ -1,5 +1,6 @@
 import React from "react";
 
+// Props interface for the Loading component
 interface LoadingStateProps {
   count?: number;
 }
@@ -7,12 +8,12 @@ interface LoadingStateProps {
 const Loading = ({ count = 4 }: LoadingStateProps) => {
   return (
     <div className="loading-book-container" data-testid="loading-skeleton">
+      {/* Generate multiple skeleton cards based on count */}
       {Array.from({ length: count }).map((_, index) => (
         <div className="loading-book-card">
           <div className="loading-book-card-image-container">
             <div className="loading-book-card-image shimmer"></div>
           </div>
-
           <div className="loading-book-content">
             <div className="loading-book-content-info">
               <div className="loading-text-line loading-title shimmer"></div>
