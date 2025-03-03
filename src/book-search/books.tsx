@@ -5,6 +5,7 @@ import Loading from "./loading";
 import notfound from "../assets/not-found.png";
 import search from "../assets/search.png";
 
+// Props interface for the Books component
 interface BookListProps {
   books: Book[] | null;
   isLoading: boolean;
@@ -18,10 +19,12 @@ const Books = ({
   searchQuery,
   totalItems,
 }: BookListProps) => {
+  // Show loading skeleton while fetching books
   if (isLoading) {
     return <Loading count={6} />;
   }
 
+  // Show "no results" state when search returns null
   if (!books) {
     return (
       <div className="not-found-container">
@@ -31,6 +34,7 @@ const Books = ({
     );
   }
 
+  // Show empty state when no search has been performed
   if (books.length === 0) {
     return (
       <div className="not-found-container">
@@ -40,6 +44,7 @@ const Books = ({
     );
   }
 
+  // Render the list of books with search query header
   return (
     <div className="">
       <h1 className="books-header">Books related to "{searchQuery}"</h1>
