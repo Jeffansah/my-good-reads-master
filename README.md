@@ -37,8 +37,8 @@ A modern web application for searching books and managing your reading wishlist.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Jeffansah/my-good-reads.git
-   cd my-good-reads
+   git clone https://github.com/Jeffansah/my-good-reads-master.git
+   cd my-good-reads-master
    ```
 
 2. Install dependencies:
