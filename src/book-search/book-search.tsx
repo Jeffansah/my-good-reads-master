@@ -68,16 +68,21 @@ import Wishlist from "../wishlist/wishlist";
 // };
 
 const BookSearch = () => {
+  // State for managing books, loading state, search query, and pagination
   const [books, setBooks] = useState<Book[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+
+  // Refs for tracking last search and debouncing
   const lastSearchRef = useRef("");
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Fetch books from Google Books API with pagination
   const fetchBooks = useCallback(async (query: string, page: number) => {
+    // Clear results if query is empty
     if (!query.trim()) {
       setBooks([]);
       setTotalItems(0);
@@ -88,8 +93,10 @@ const BookSearch = () => {
     lastSearchRef.current = query;
 
     try {
+      // Calculate pagination offset
       const startIndex = (page - 1) * itemsPerPage;
 
+      // Fetch books from API
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
           query
@@ -99,9 +106,11 @@ const BookSearch = () => {
       const data = (await response.json()) as BooksResponse;
       const fetchedTotalItems = data.totalItems || 0;
 
+      // Cap total items at 1000 and calculate total pages
       const adjustedTotalItems = Math.min(fetchedTotalItems, 1000);
       const totalPages = Math.ceil(adjustedTotalItems / itemsPerPage);
 
+      // Update state with fetched books or clear if no results
       if (data.items && data.items.length > 0) {
         setBooks(data.items);
         setTotalItems(adjustedTotalItems);
@@ -112,6 +121,7 @@ const BookSearch = () => {
         setCurrentPage(1);
       }
     } catch (error) {
+      // Clear state on error
       setBooks(null);
       setTotalItems(0);
     } finally {
@@ -119,6 +129,7 @@ const BookSearch = () => {
     }
   }, []);
 
+  // Handle page changes in pagination
   const handlePageChange = (page: number) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     if (page > totalPages) {
@@ -128,6 +139,7 @@ const BookSearch = () => {
     fetchBooks(searchQuery, page);
   };
 
+  // Handle search with debouncing
   const handleSearch = useCallback(
     (query: string) => {
       setSearchQuery(query);
@@ -152,6 +164,7 @@ const BookSearch = () => {
             searchQuery={searchQuery}
             totalItems={totalItems}
           />
+          {/* Show pagination only if there are results */}
           {totalItems > 0 && (
             <Pagination
               currentPage={currentPage}
