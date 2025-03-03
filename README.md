@@ -1,31 +1,64 @@
-# eBay React Coding Exercise Repo
+# My Good Reads
 
-Thank you for your interest in eBay Engineering Team. This repo contains exercises used in eBay's recruitment process. These exercises are used for all frontend engineering roles, at all levels.
+A modern web application for searching books and managing your reading wishlist. Built with React and TypeScript.
 
-Please complete the coding exercises below, upload code to a personal git repo, and share the link to your repo.
+## Features
 
-#### Please don't fork this repo. Download/Clone the repository, finish the exercise and upload it as a new repository in your github account. Share with us the link for that repository
+- 🔍 Real-time book search with debounced API calls
+- 📚 Responsive book listing with pagination
+- ❤️ Wishlist management with local storage persistence
+- 📱 Mobile-friendly design with collapsible wishlist panel
+- ♿ Accessible UI components
+- 🧪 Comprehensive test coverage
+
+## Tech Stack
+
+- React 16
+- TypeScript
+- SCSS for styling
+- Jest and React Testing Library for testing
+- Google Books API for book data
 
 ## Prerequisites
 
-To build and run the sample code please make sure you have the following prerequisites
-
-- NodeJs v20.18.1 or higher
-- Yarn
+- Node.js v20.18.1 or higher
+- Yarn package manager
 
 ## Getting Started
 
-This repository contains a sample ReactJs application. When launched the sample web application displays a "search" box where you can enter a book name and press ENTER. Results matching your input will be displayed as a JSON String.  
-You can follow the instruction below to launch the sample application.
+1. Clone the repository:
 
-1. Install dependencies using `yarn`
-2. Launch the web application using `yarn start`
-3. Navigate to [http://localhost:3000](http://localhost:3000)
-4. You can run tests using `yarn test`
+   ```bash
+   git clone https://github.com/Jeffansah/my-good-reads.git
+   cd my-good-reads
+   ```
 
-**Troubleshooting Script Issues:**
+2. Install dependencies:
 
-If you encounter issues running the default `yarn start`, `yarn build`, or `yarn test` scripts, it might be due to compatibility issues with your Node.js version and OpenSSL. To resolve this, you can try using the following scripts in your `package.json` file:
+   ```bash
+   yarn install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   yarn start
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Available Scripts
+
+- `yarn start` - Runs the app in development mode
+- `yarn test` - Launches the test runner
+- `yarn build` - Builds the app for production
+- `yarn eject` - Ejects from Create React App
+
+## Troubleshooting
+
+### OpenSSL Legacy Provider Issue
+
+If you encounter errors when running the scripts, it might be due to Node.js version compatibility issues with OpenSSL. To resolve this, modify your `package.json` scripts to include the OpenSSL legacy provider:
 
 ```json
 "scripts": {
@@ -34,32 +67,71 @@ If you encounter issues running the default `yarn start`, `yarn build`, or `yarn
   "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
   "eject": "react-scripts eject"
 }
+```
 
+This is a known issue with newer Node.js versions and Create React App. The legacy provider option enables compatibility with older OpenSSL configurations.
 
-Please feel free to make your own decisions about Web UI development. Though you are can use any UI library to build the web page, please see if you can avoid them. Also, you may use any state management technique.
+## Usage
 
-## Coding Exercise
-Please complete the following coding exercises and submit your code to us.
+### Searching for Books
 
-### Exercise 1: Design a web page in line with the mockup.
-> Requirement 1: As a user, I want to see a responsive page similar to the mockup. Sample JSON response is returned when the search term is entered and submitted in the search box.
+1. Type a book title, author, or topic in the search box
+2. Results will appear automatically as you type (with a 500ms debounce)
+3. Use the pagination controls to navigate through results
 
-> Requirement 2: As a user, I want to add books to my wishlist displayed on right section of the web page.
+### Managing Your Wishlist
 
-> Some helpful fields available in the response that helps you in building the mocks are:  image (coverUrl), title, author, publisher, published & description
+1. Click the heart icon on any book to add it to your wishlist
+2. View your wishlist in the right panel (desktop) or bottom panel (mobile)
+3. Remove books from your wishlist using the trash icon
+4. Your wishlist persists between sessions using local storage
 
-![](./mockup.png)
+### Mobile Experience
 
-Please test your code for accessibility and make sure it is accessible.
+- The wishlist panel collapses into a bottom drawer on mobile devices
+- Swipe up to expand the wishlist
+- Swipe down to collapse it
+- The search interface adapts to smaller screens
 
-### Exercise 2: Add instant search capabilities
-> Requirement 1: As a user, I want to see book results as I am typing in the search field. I don't want to have to submit the form to view search results.
+## Testing
 
-Please make sure you are not spamming the API with too many calls. No more than one request every 500 ms.
+The application includes comprehensive test coverage:
 
-### Exercise 3: Unit tests
-Write unit tests for your code.
+- Unit tests for utility functions
+- Component tests for React components
+- Integration tests for user interactions
+- Accessibility testing
 
-## How to submit code?
-Please upload completed code to a personal git repository and share the link to your repository with us.
+Run the test suite:
+
+```bash
+yarn test
+```
+
+## Project Structure
+
+```
+src/
+├── book-search/     # Book search components
+├── context/         # React context providers
+├── lib/            # Utility functions
+├── types/          # TypeScript type definitions
+├── wishlist/       # Wishlist components
+└── assets/         # Static assets
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+```
+
 ```
