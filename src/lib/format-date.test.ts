@@ -1,4 +1,4 @@
-import { formatDate } from "./formatDate";
+import { formatDate } from "./format-date";
 
 // Test suite for date formatting functionality
 describe("formatDate", () => {

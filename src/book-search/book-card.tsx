@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Book } from "../types/books.types";
 import placeholder from "../assets/placeholder.png";
-import { formatDate } from "../lib/formatDate";
+import { formatDate } from "../lib/format-date";
 import { Heart, Plus } from "lucide-react";
 import { useWishlist } from "../context/wishlist-context";
 
