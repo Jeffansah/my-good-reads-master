@@ -3,7 +3,9 @@ import { useWishlist } from "../context/wishlist-context";
 import WishlistCard from "./wishlist-card";
 
 const WishlistMobile = () => {
+  // Get wishlist data from context
   const { wishlist } = useWishlist();
+  // State for controlling wishlist panel expansion
   const [isExpanded, setIsExpanded] = useState("");
 
   return (
@@ -17,6 +19,7 @@ const WishlistMobile = () => {
       }`}
       data-testid="wishlist-mobile-container"
     >
+      {/* Expand/collapse toggle button */}
       <div
         className="wishlist-expand"
         onClick={() =>
@@ -28,6 +31,7 @@ const WishlistMobile = () => {
         }
       />
 
+      {/* Wishlist header with title and count */}
       <div className="wishlist-header">
         <h2 className="wishlist-title">My Wishlist</h2>
         <span className="wishlist-count">
@@ -35,7 +39,9 @@ const WishlistMobile = () => {
         </span>
       </div>
 
+      {/* Conditional rendering based on wishlist state */}
       {wishlist.length === 0 ? (
+        // Empty state message
         <div className="wishlist-empty">
           <p className="wishlist-empty-text">Your wishlist is empty</p>
           <p className="wishlist-empty-subtext">
@@ -43,6 +49,7 @@ const WishlistMobile = () => {
           </p>
         </div>
       ) : (
+        // List of wishlist items with dynamic layout from expansion state
         <div
           className={`wishlist-items ${
             isExpanded === "expanded"
