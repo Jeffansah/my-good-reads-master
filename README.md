@@ -2,6 +2,8 @@
 
 A modern web application for searching books and managing your reading wishlist. Built with React and TypeScript.
 
+🌐 **Live Demo**: [https://my-good-reads-master.vercel.app](https://my-good-reads-master.vercel.app)
+
 ## Features
 
 - 🔍 Real-time book search with debounced API calls
