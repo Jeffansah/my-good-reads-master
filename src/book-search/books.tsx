@@ -4,6 +4,7 @@ import BookCard from "./book-card";
 import Loading from "./loading";
 import notfound from "../assets/not-found.png";
 import search from "../assets/search.png";
+import serverErrorImage from "../assets/server.png";
 
 // Props interface for the Books component
 interface BookListProps {
@@ -25,6 +26,7 @@ const Books = ({
   }
 
   // Show "no results" state when search returns null
+
   if (!books) {
     return (
       <div className="not-found-container">

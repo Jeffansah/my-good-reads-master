@@ -104,6 +104,7 @@ const BookSearch = () => {
       );
 
       const data = (await response.json()) as BooksResponse;
+
       const fetchedTotalItems = data.totalItems || 0;
 
       // Cap total items at 1000 and calculate total pages
