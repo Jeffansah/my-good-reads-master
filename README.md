@@ -19,6 +19,14 @@ A modern web application for searching books and managing your reading wishlist.
 - Jest and React Testing Library for testing
 - Google Books API for book data
 
+> **Note:** This application uses the Google Books API which has rate limits. If you encounter "No books found" errors, it might be due to:
+>
+> - Reaching the API rate limit
+> - Too many requests in a short time period
+> - Network connectivity issues
+>
+> Please wait a few minutes before trying again if you encounter these issues.
+
 ## Prerequisites
 
 - Node.js v20.18.1 or higher
@@ -70,6 +78,38 @@ If you encounter errors when running the scripts, it might be due to Node.js ver
 ```
 
 This is a known issue with newer Node.js versions and Create React App. The legacy provider option enables compatibility with older OpenSSL configurations.
+
+### Port Conflicts
+
+If you encounter a port conflict (e.g., "Port 3000 is already in use"), you can resolve it in several ways:
+
+1. Find and kill the process using the port:
+
+   ```bash
+   # For macOS/Linux
+   lsof -i :3000
+   kill -9 <PID>
+
+   # For Windows
+   netstat -ano | findstr :3000
+   taskkill /PID <PID> /F
+   ```
+
+2. Use a different port:
+
+   ```bash
+   PORT=3001 yarn start
+   ```
+
+3. Kill all Node processes (use with caution):
+
+   ```bash
+   # For macOS/Linux
+   pkill -f node
+
+   # For Windows
+   taskkill /F /IM node.exe
+   ```
 
 ## Usage
 
