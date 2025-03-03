@@ -1,18 +1,19 @@
 export const formatDate = (dateString: string): string => {
+  // Return early if no date provided
   if (!dateString) {
     return "No date available";
   }
 
-  // Handle different date formats
+  // Normalize date separators and split into parts
   const normalizedDate = dateString.replace(/\//g, "-");
   const parts = normalizedDate.split("-");
 
-  // Handle year-only format
+  // Handle year-only format (e.g., "2024")
   if (parts.length === 1 && parts[0].length === 4) {
     return parts[0];
   }
 
-  // Handle month-year format
+  // Handle month-year format (e.g., "2024-03")
   if (parts.length === 2 && parts[0].length === 4 && parts[1].length === 2) {
     const year = parseInt(parts[0]);
     const month = parseInt(parts[1]);
@@ -52,22 +53,28 @@ export const formatDate = (dateString: string): string => {
     date = new Date(normalizedDate);
   }
 
+  // Validate the parsed date
   if (isNaN(date.getTime())) {
     return "Invalid Date";
   }
 
+  // Format the date components
   const day = date.getDate();
   const month = date.toLocaleString("default", { month: "long" });
   const year = date.getFullYear();
 
+  // Add ordinal suffix to day and return formatted date
   const dayWithSuffix = getDayWithSuffix(day);
   return `${dayWithSuffix} ${month}, ${year}`;
 };
 
+// Helper function to add ordinal suffix to day number
 const getDayWithSuffix = (day: number): string => {
+  // Special case for 11th, 12th, 13th
   if (day >= 11 && day <= 13) {
     return `${day}th`;
   }
+  // Add appropriate suffix based on last digit
   switch (day % 10) {
     case 1:
       return `${day}st`;
