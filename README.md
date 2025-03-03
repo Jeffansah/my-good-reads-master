@@ -66,18 +66,30 @@ A modern web application for searching books and managing your reading wishlist.
 
 ### OpenSSL Legacy Provider Issue
 
-If you encounter errors when running the scripts, it might be due to Node.js version compatibility issues with OpenSSL. To resolve this, modify your `package.json` scripts to include the OpenSSL legacy provider:
+The scripts in this project use the OpenSSL legacy provider to resolve Node.js compatibility issues. If you encounter any problems with this configuration, you can revert to the original scripts:
 
-```json
-"scripts": {
-  "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-  "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
-  "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
-  "eject": "react-scripts eject"
-}
-```
+1. **Current Configuration** (with OpenSSL legacy provider):
 
-This is a known issue with newer Node.js versions and Create React App. The legacy provider option enables compatibility with older OpenSSL configurations.
+   ```json
+   "scripts": {
+     "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+     "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+     "test": "NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
+     "eject": "react-scripts eject"
+   }
+   ```
+
+2. **Original Configuration** (if the above causes issues):
+   ```json
+   "scripts": {
+     "start": "react-scripts start",
+     "build": "react-scripts build",
+     "test": "react-scripts test",
+     "eject": "react-scripts eject"
+   }
+   ```
+
+Choose the configuration that works best with your Node.js environment.
 
 ## Usage
 
