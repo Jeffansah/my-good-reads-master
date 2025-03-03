@@ -79,38 +79,6 @@ If you encounter errors when running the scripts, it might be due to Node.js ver
 
 This is a known issue with newer Node.js versions and Create React App. The legacy provider option enables compatibility with older OpenSSL configurations.
 
-### Port Conflicts
-
-If you encounter a port conflict (e.g., "Port 3000 is already in use"), you can resolve it in several ways:
-
-1. Find and kill the process using the port:
-
-   ```bash
-   # For macOS/Linux
-   lsof -i :3000
-   kill -9 <PID>
-
-   # For Windows
-   netstat -ano | findstr :3000
-   taskkill /PID <PID> /F
-   ```
-
-2. Use a different port:
-
-   ```bash
-   PORT=3001 yarn start
-   ```
-
-3. Kill all Node processes (use with caution):
-
-   ```bash
-   # For macOS/Linux
-   pkill -f node
-
-   # For Windows
-   taskkill /F /IM node.exe
-   ```
-
 ## Usage
 
 ### Searching for Books
