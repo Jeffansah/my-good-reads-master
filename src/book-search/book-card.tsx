@@ -6,7 +6,7 @@ import { Heart, Plus } from "lucide-react";
 import { useWishlist } from "../context/wishlist-context";
 
 const BookCard = ({ book }: { book: Book }) => {
-  const { addToWishlist, isInWishlist } = useWishlist();
+  const { wishlist, addToWishlist, isInWishlist } = useWishlist();
 
   const { volumeInfo } = book;
 

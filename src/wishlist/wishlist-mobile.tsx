@@ -15,6 +15,7 @@ const WishlistMobile = () => {
           ? "collapsed"
           : ""
       }`}
+      data-testid="wishlist-mobile-container"
     >
       <div
         className="wishlist-expand"

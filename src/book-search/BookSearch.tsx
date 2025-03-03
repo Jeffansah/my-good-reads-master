@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { getBooksByType } from "./book-search.service";
+import React, { useCallback, useRef, useState } from "react";
 import SearchBar from "./search-bar";
 import Books from "./books";
 import { Book, BooksResponse } from "../types/books.types";
 import Pagination from "./pagination";
-import { useWishlist } from "../context/wishlist-context";
 import Wishlist from "../wishlist/wishlist";
 
 //     const [bookType, updateBookType] = useState("");
@@ -114,7 +112,6 @@ const BookSearch = () => {
         setCurrentPage(1);
       }
     } catch (error) {
-      console.error("Error fetching books:", error);
       setBooks(null);
       setTotalItems(0);
     } finally {
@@ -145,7 +142,7 @@ const BookSearch = () => {
   );
 
   return (
-    <div className="container">
+    <div className="container" data-testid="book-search">
       <div>
         <div className="search-books">
           <SearchBar onSearch={handleSearch} />
