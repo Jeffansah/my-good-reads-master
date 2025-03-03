@@ -10,7 +10,6 @@ A modern web application for searching books and managing your reading wishlist.
 - 📚 Responsive book listing with pagination
 - ❤️ Wishlist management with local storage persistence
 - 📱 Mobile-friendly design with collapsible wishlist panel
-- ♿ Accessible UI components
 - 🧪 Comprehensive test coverage
 
 ## Tech Stack
@@ -111,18 +110,15 @@ Choose the configuration that works best with your Node.js environment.
 ### Mobile Experience
 
 - The wishlist panel collapses into a bottom drawer on mobile devices
-- Swipe up to expand the wishlist
-- Swipe down to collapse it
+- Tap to expand the wishlist
+- Tap to collapse it
 - The search interface adapts to smaller screens
 
 ## Testing
 
 The application includes comprehensive test coverage:
 
-- Unit tests for utility functions
-- Component tests for React components
-- Integration tests for user interactions
-- Accessibility testing
+- Unit tests for components and utility functions
 
 Run the test suite:
 
